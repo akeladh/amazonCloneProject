@@ -1,5 +1,3 @@
-console.log('hello');
-
 let productsHTML = '';
 
 products.forEach((product)=>{
@@ -69,7 +67,7 @@ document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
       }
     });
 
-    //if already in cart, increase quantity
+    //if already in cart, increase quantity if not push to cart array
     if(matchingItem){
       matchingItem.quantity++;
     }else{
@@ -77,6 +75,16 @@ document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
         productId,
         quantity: 1})
     }
-    console.log(cart);
+
+
+    //counting the quantity of items in cart
+    let cartQuantity=0;
+
+    cart.forEach((item)=>{
+      cartQuantity += item.quantity;
+    });
+    //making cart interactive
+    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+
   });
 });
